@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import NavLink from "./navLink";
 import { motion } from "framer-motion";
+import Logo from "./Logo";
 
 const links = [
   { url: "/", title: "Home" },
@@ -69,9 +70,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-full flex items-center justify-between px-4 sm:px-8 md:px-12 lg:px-20 xl:px-48 text-xl">
+    <div className="flex h-full items-center justify-between px-4 text-xl sm:px-8 md:px-12 lg:px-20 xl:px-48">
+      <Logo className="mr-10 md:mr-5"></Logo>
       {/* LINKS */}
-      <div className="hidden md:flex gap-4 w-1/3">
+      <div className="hidden w-1/3 gap-4 md:flex">
         {links.map((link) => (
           <NavLink link={link} key={link.title} />
         ))}
@@ -80,16 +82,16 @@ const Navbar = () => {
       <div className="md:hidden lg:flex xl:w-1/3 xl:justify-center">
         <Link
           href="/"
-          className="text-sm bg-black rounded-md p-1 font-semibold flex items-center justify-center"
+          className="flex items-center justify-center rounded-md bg-primary p-1 text-sm font-semibold"
         >
-          <span className="text-white mr-1">Lama</span>
-          <span className="w-12 h-8 rounded bg-white text-black flex items-center justify-center">
-            .dev
+          <span className="mr-1 text-secondary">gin</span>
+          <span className="flex h-8 w-12 items-center justify-center rounded bg-secondary text-primary">
+            code
           </span>
         </Link>
       </div>
       {/* SOCIAL */}
-      <div className="hidden md:flex gap-4 w-1/3">
+      <div className="hidden w-1/3 gap-4 md:flex">
         <Link href="/">
           <Image src="/github.png" alt="" width={24} height={24} />
         </Link>
@@ -113,23 +115,23 @@ const Navbar = () => {
       <div className="md:hidden">
         {/* MENU BUTTON */}
         <button
-          className="w-10 h-8 flex flex-col justify-between z-50 relative"
+          className="relative z-50 flex h-8 w-10 flex-col justify-between"
           onClick={() => setOpen((prev) => !prev)}
         >
           <motion.div
             variants={topVariants}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-black rounded origin-left"
+            className="h-1 w-10 origin-left rounded bg-black"
           ></motion.div>
           <motion.div
             variants={centerVariants}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-black rounded"
+            className="h-1 w-10 rounded bg-black"
           ></motion.div>
           <motion.div
             variants={bottomVariants}
             animate={open ? "opened" : "closed"}
-            className="w-10 h-1 bg-black rounded origin-left"
+            className="h-1 w-10 origin-left rounded bg-black"
           ></motion.div>
         </button>
         {/* MENU LIST */}
@@ -138,7 +140,7 @@ const Navbar = () => {
             variants={listVariants}
             initial="closed"
             animate="opened"
-            className="absolute top-0 left-0 w-screen h-screen bg-black text-white flex flex-col items-center justify-center gap-8 text-4xl z-40"
+            className="absolute left-0 top-0 z-40 flex h-screen w-screen flex-col items-center justify-center gap-8 bg-black text-4xl text-white"
           >
             {links.map((link) => (
               <motion.div
