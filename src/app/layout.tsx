@@ -4,6 +4,8 @@ import { GeistSans } from "geist/font/sans";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import TransitionProvider from "./_components/transitionProvider";
+import { ThemeProvider } from "./_components/themeprovider";
+import { ModeToggle } from "./_components/ToggleTheme";
 
 export const metadata = {
   title: "Create T3 App",
@@ -20,7 +22,15 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <TRPCReactProvider>
-          <TransitionProvider>{children}</TransitionProvider>
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="dracula"
+            enableSystem={false}
+            storageKey="notes-theme"
+          >
+            <ModeToggle></ModeToggle>
+            <TransitionProvider>{children}</TransitionProvider>
+          </ThemeProvider>
         </TRPCReactProvider>
       </body>
     </html>
