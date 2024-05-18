@@ -6,7 +6,9 @@ import { useState } from "react";
 import NavLink from "./navLink";
 import { motion } from "framer-motion";
 import Logo from "./Logo";
-
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
 const links = [
   { url: "/", title: "Home" },
   { url: "/about", title: "About" },
@@ -92,23 +94,14 @@ const Navbar = () => {
       </div>
       {/* SOCIAL */}
       <div className="hidden w-1/3 gap-4 md:flex">
-        <Link href="/">
-          <Image src="/github.png" alt="" width={24} height={24} />
+        <Link href="https://github.com/gincode18">
+          <FaGithub className=" hover:fill-accent" size={30}></FaGithub>
         </Link>
-        <Link href="/">
-          <Image src="/dribbble.png" alt="" width={24} height={24} />
+        <Link href="https://www.linkedin.com/in/vishal-kamboj-5a187a208/">
+          <FaLinkedin size={30} className=" hover:fill-accent"></FaLinkedin>
         </Link>
-        <Link href="/">
-          <Image src="/instagram.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/facebook.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/pinterest.png" alt="" width={24} height={24} />
-        </Link>
-        <Link href="/">
-          <Image src="/linkedin.png" alt="" width={24} height={24} />
+        <Link href="https://twitter.com/gincode18">
+          <FaTwitter className=" hover:fill-accent" size={30} />
         </Link>
       </div>
       {/* RESPONSIVE MENU */}

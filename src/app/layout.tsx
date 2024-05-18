@@ -24,9 +24,9 @@ export default function RootLayout({
         <TRPCReactProvider>
           <ThemeProvider
             attribute="data-theme"
-            defaultTheme="dracula"
+            defaultTheme="luxury"
             enableSystem={false}
-            storageKey="notes-theme"
+            storageKey="theme"
           >
             <ModeToggle></ModeToggle>
             <TransitionProvider>{children}</TransitionProvider>
