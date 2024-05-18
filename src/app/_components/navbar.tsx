@@ -95,13 +95,13 @@ const Navbar = () => {
       {/* SOCIAL */}
       <div className="hidden w-1/3 gap-4 md:flex">
         <Link href="https://github.com/gincode18">
-          <FaGithub className=" hover:fill-accent" size={30}></FaGithub>
+          <FaGithub className="hover:fill-secondary fill-primary" size={30}></FaGithub>
         </Link>
         <Link href="https://www.linkedin.com/in/vishal-kamboj-5a187a208/">
-          <FaLinkedin size={30} className=" hover:fill-accent"></FaLinkedin>
+          <FaLinkedin size={30} className="fill-primary hover:fill-secondary"></FaLinkedin>
         </Link>
         <Link href="https://twitter.com/gincode18">
-          <FaTwitter className=" hover:fill-accent" size={30} />
+          <FaTwitter className="fill-primary hover:fill-secondary" size={30} />
         </Link>
       </div>
       {/* RESPONSIVE MENU */}
