@@ -4,8 +4,38 @@ import { motion, useInView, useScroll } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import Sign from "../_components/Sign";
+import { type } from "os";
 
 const AboutPage = () => {
+  type Experience = {
+    Position: string;
+    Desciption: string;
+    Time: string;
+    Company: string;
+  };
+  const exprerience: Experience[] = [
+    {
+      Position: "Associate - Middleware Engineer",
+      Company: "Credain",
+      Desciption:
+        "Led the development and maintenance of middleware solutions using Node.js, enhancing integration and communication ",
+      Time: "Nov 2023 - March 2024",
+    },
+    {
+      Position: "Full-Stack Developer Intern",
+      Company: "SquadifyPro",
+      Desciption:
+        "Developed and maintained custom Shopify apps using React.js, Express.js, and Remix.js, ensuring seamless integration with Shopify’s APIs.",
+      Time: "Sep 2023 -Nov 2023",
+    },
+    {
+      Position: "Backend Developer Intern",
+      Company: "Clinigo",
+      Desciption:
+        "Collaborate in backend development Work closely with the development team to assist in using Express.js and Node.js.",
+      Time: "June 2023 - Sept 2024",
+    },
+  ];
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({ container: containerRef });
@@ -41,7 +71,7 @@ const AboutPage = () => {
             {/* BIOGRAPHY TITLE */}
             <h1 className="text-2xl font-bold text-primary">BIOGRAPHY</h1>
             {/* BIOGRAPHY DESC */}
-            <p className="text-lg">
+            <p className="text-lg  font-bold ">
               Hello! I'm Vishal, a passionate software engineer specializing in
               full-stack development . Currently, I'm pursuing my B.Tech in
               Computer Science Engineering at VIT Vellore, I have honed my
@@ -51,7 +81,9 @@ const AboutPage = () => {
               MongoDB, Next.js, Prisma, Git, GitHub Actions, Docker
             </p>
             {/* BIOGRAPHY QUOTE */}
-            <span className="italic">When I'm not coding,I watch Anime</span>
+            <span className="italic text-accent">
+              When I'm not coding,I watch Anime
+            </span>
             {/* BIOGRAPHY SIGN SVG*/}
             <div className="self-end">
               <Sign></Sign>
@@ -70,13 +102,20 @@ const AboutPage = () => {
               <path
                 d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
                 stroke="#000000"
+                className=" stroke-primary"
                 strokeWidth="1"
               ></path>
-              <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
+              <path
+                d="M12 6V14"
+                stroke="#000000"
+                strokeWidth="1"
+                className=" stroke-primary"
+              ></path>
               <path
                 d="M15 11L12 14L9 11"
                 stroke="#000000"
                 strokeWidth="1"
+                className=" stroke-primary"
               ></path>
             </motion.svg>
           </div>
@@ -97,76 +136,55 @@ const AboutPage = () => {
               animate={isSkillRefInView ? { x: 0 } : {}}
               className="flex flex-wrap gap-4"
             >
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 JavaScript
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 TypeScript
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 React.js
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Next.js
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                SCSS
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Tailwind CSS
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 MongoDB
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
+                Prisma
+              </div>
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 PostgreSQL
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Node.js
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Nest.js
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Express.js
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                Spring Boot
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                GraphQL
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                Apollo
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Redux
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Framer Motion
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Three.js
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                WebGL
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                Webpack
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                Vite
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Docker
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 AWS
               </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
-                Firebase
-              </div>
-              <div className="cursor-pointer  rounded bg-black p-2 text-sm text-white hover:bg-white hover:text-black">
+              <div className="cursor-pointer  rounded bg-secondary p-2 text-sm  hover:bg-accent hover:text-secondary">
                 Git
               </div>
             </motion.div>
@@ -185,12 +203,19 @@ const AboutPage = () => {
                 d="M5 15C5 16.8565 5.73754 18.6371 7.05029 19.9498C8.36305 21.2626 10.1435 21.9999 12 21.9999C13.8565 21.9999 15.637 21.2626 16.9498 19.9498C18.2625 18.6371 19 16.8565 19 15V9C19 7.14348 18.2625 5.36305 16.9498 4.05029C15.637 2.73754 13.8565 2 12 2C10.1435 2 8.36305 2.73754 7.05029 4.05029C5.73754 5.36305 5 7.14348 5 9V15Z"
                 stroke="#000000"
                 strokeWidth="1"
+                className=" stroke-primary"
               ></path>
-              <path d="M12 6V14" stroke="#000000" strokeWidth="1"></path>
+              <path
+                d="M12 6V14"
+                stroke="#000000"
+                className=" stroke-primary"
+                strokeWidth="1"
+              ></path>
               <path
                 d="M15 11L12 14L9 11"
                 stroke="#000000"
                 strokeWidth="1"
+                className=" stroke-primary"
               ></path>
             </motion.svg>
           </div>
@@ -313,7 +338,7 @@ const AboutPage = () => {
           </div>
         </div>
         {/* SVG CONTAINER */}
-        <div className="sticky top-0 z-30 hidden w-1/3 lg:block xl:w-1/2">
+        <div className="sticky top-0  z-30 hidden w-1/3 lg:block xl:w-2/3">
           <Brain scrollYProgress={scrollYProgress} />
         </div>
       </div>
