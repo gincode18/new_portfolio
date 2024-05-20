@@ -50,7 +50,7 @@ const ContactPage = () => {
           <span>Dear Vishal,</span>
           <textarea
             rows={6}
-            className="resize-none border-b-2 border-b-primary bg-transparent outline-none"
+            className="textarea textarea-bordered textarea-primary bg-secondary"
             name="user_message"
             value={Message}
             onChange={(e) => setMessage(e.target.value)}
