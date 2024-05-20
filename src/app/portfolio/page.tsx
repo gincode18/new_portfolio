@@ -3,67 +3,62 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { api } from "~/trpc/react";
 
-type Item = {
-  id: Number;
+type Project = {
+  order: number;
   title: String;
   desc: String;
   img: String;
   link: String;
 };
-const items: Item[] = [
+const project: Project[] = [
   {
-    id: 1,
-    title: "NextTube",
-    desc: "A full-stack video streaming application utilizing the T3 Stack, delivering seamless video streaming. Features include Next.js for efficient rendering, Typescript for robustness, with TRPC , Next Auth for secure authentication, Prisma for database operations, and Tailwind CSS for a visually appealing UI.",
-    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716122607/qcevt0un63a9wcengujk.png",
-    link: "https://github.com/gincode18/NextTube",
+    order: 1,
+    title: "E-commerce",
+    desc: "An E-commerce Site Build with Reactjs Nodejs Express.js Tailwindcss Passport.js",
+    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716139621/hif5npxnbj18bncf3zrz.png",
+    link: "https://github.com/gincode18/react-js-ecommerce",
   },
   {
-    id: 2,
-    title: "Next Chat",
-    desc: "A cutting-edge messaging and collaboration platform powered by Next.js for efficient server-side rendering and Tailwind CSS for a sleek UI. With TypeScript ensuring reliability and Socket.io enabling real-time messaging, Next Chat delivers seamless user interactions.",
-    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716138268/ar5o9exiakjluuozgzsk.png",
-    link: "https://github.com/gincode18/NextChat",
-  },
-  {
-    id: 3,
-    title: "FormWave",
-    desc: "An advanced form builder application built on Next.js 13 and Dnd-kit technologies. FormWave simplifies form creation with its intuitive drag-and-drop interface and responsive design. Leveraging TypeScript for robustness and Tailwind CSS for a sleek UI, FormWave streamlines data collection and submission processes.",
-    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716138527/trlvorgg7ue7rrpmxvyr.png",
-    link: "https://github.com/gincode18/FormWave",
-  },
-  {
-    id: 4,
-    title: "PaperProphet",
-    desc: "A dynamic document communication platform fueled by Next.js and OpenAI API. Engineered to streamline collaboration within PDFs, PaperProphet integrates cutting-edge web technologies for enhanced functionality. Leveraging the power of Tailwind CSS for efficient UI",
-    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716138936/frexhhwpfrbam19txwkc.png",
-    link: "https://github.com/gincode18/AI_PDF_READER",
-  },
-  {
-    id: 5,
+    order: 2,
     title: "IntelliNote",
     desc: "A Notes Taking App build with Nextjs Typescipt Tailwindcss firestore OpenAI-API for auto complete and image generation  ",
     img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716139300/r1vxogeebemcrihmtbxx.png",
     link: "https://github.com/gincode18/AI_NOTES",
   },
   {
-    id: 6,
-    title: "E-commerce",
-    desc: "An E-commerce Site Build with Reactjs Nodejs Express.js Tailwindcss Passport.js",
-    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716139621/hif5npxnbj18bncf3zrz.png",
-    link: "https://github.com/gincode18/react-js-ecommerce",
+    order: 3,
+    title: "PaperProphet",
+    desc: "A dynamic document communication platform fueled by Next.js and OpenAI API. Engineered to streamline collaboration within PDFs, PaperProphet integrates cutting-edge web technologies for enhanced functionality. Leveraging the power of Tailwind CSS for efficient UI",
+    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716138936/frexhhwpfrbam19txwkc.png",
+    link: "https://github.com/gincode18/AI_PDF_READER",
   },
   {
-    id: 7,
-    title: "E-commerce",
-    desc: "An E-commerce Site Build with Reactjs Nodejs Express.js Tailwindcss Passport.js",
-    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716139621/hif5npxnbj18bncf3zrz.png",
-    link: "https://github.com/gincode18/react-js-ecommerce",
-  }
+    order: 4,
+    title: "FormWave",
+    desc: "An advanced form builder application built on Next.js 13 and Dnd-kit technologies. FormWave simplifies form creation with its intuitive drag-and-drop interface and responsive design. Leveraging TypeScript for robustness and Tailwind CSS for a sleek UI, FormWave streamlines data collection and submission processes.",
+    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716138527/trlvorgg7ue7rrpmxvyr.png",
+    link: "https://github.com/gincode18/FormWave",
+  },
+  {
+    order: 5,
+    title: "Next Chat",
+    desc: "A cutting-edge messaging and collaboration platform powered by Next.js for efficient server-sordere rendering and Tailwind CSS for a sleek UI. With TypeScript ensuring reliability and Socket.io enabling real-time messaging, Next Chat delivers seamless user interactions.",
+    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716138268/ar5o9exiakjluuozgzsk.png",
+    link: "https://github.com/gincode18/NextChat",
+  },
+  {
+    order: 6,
+    title: "NextTube",
+    desc: "A full-stack video streaming application utilizing the T3 Stack, delivering seamless video streaming. Features include Next.js for efficient rendering, Typescript for robustness, with TRPC , Next Auth for secure authentication, Prisma for database operations, and Tailwind CSS for a visually appealing UI.",
+    img: "https://res.cloudinary.com/dbj5s9roc/image/upload/v1716122607/qcevt0un63a9wcengujk.png",
+    link: "https://github.com/gincode18/NextTube",
+  },
 ];
 
 const PortfolioPage = () => {
+  project.sort((a: Project, b: Project) => b.order - a.order);
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({ target: ref });
@@ -112,10 +107,10 @@ const PortfolioPage = () => {
         <div className="sticky top-0 flex h-screen items-center gap-4 overflow-hidden">
           <motion.div style={{ x }} className="flex">
             <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
-            {items.map((item) => (
+            {project.map((item) => (
               <div
                 className={`flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/40  to-primary/40 `}
-                key={item.id.toString()}
+                key={item.order.toString()}
               >
                 <div className="flex flex-col gap-8 ">
                   <h1 className="text-xl font-bold text-primary md:text-4xl lg:text-6xl xl:text-8xl">
@@ -138,6 +133,7 @@ const PortfolioPage = () => {
                 </div>
               </div>
             ))}
+            <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
           </motion.div>
         </div>
       </div>

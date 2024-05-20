@@ -15,3 +15,20 @@ model User {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   email String
 }
+
+model Experience {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  position    String
+  description String
+  time        String
+  company     String
+}
+
+model Projects {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  order Int    @default(0)
+  title String
+  desc  String
+  img   String
+  link  String
+}
