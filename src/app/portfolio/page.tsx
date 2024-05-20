@@ -22,7 +22,11 @@ const PortfolioPage = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   if (isLoading) {
-    return <div>loading</div>;
+    return (
+      <div className=" mt-10 flex w-full items-center justify-center">
+        <div className=" loading loading-bars h-80 w-80 text-primary "></div>
+      </div>
+    );
   } else if (data) {
     project = data;
     return (

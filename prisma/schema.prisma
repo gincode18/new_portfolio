@@ -19,6 +19,7 @@ model User {
 model Experience {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   position    String
+  order       Int    @default(0)
   description String
   time        String
   company     String
@@ -31,4 +32,9 @@ model Projects {
   desc  String
   img   String
   link  String
+}
+
+model Skills {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  skill String
 }
