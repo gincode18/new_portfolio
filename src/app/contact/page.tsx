@@ -1,38 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
+import { api } from "~/trpc/react";
 // import emailjs from "@emailjs/browser";
 
 const ContactPage = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [Message, setMessage] = useState("");
+  const [From, setFrom] = useState("");
   const text = "Say Hello";
 
-  const form = useRef<HTMLFormElement>(null);
-
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-  //   setError(false);
-  //   setSuccess(false);
-
-  //   emailjs
-  //     .sendForm(
-  //       process.env.NEXT_PUBLIC_SERVICE_ID,
-  //       process.env.NEXT_PUBLIC_TEMPLATE_ID,
-  //       form.current,
-  //       process.env.NEXT_PUBLIC_PUBLIC_KEY
-  //     )
-  //     .then(
-  //       () => {
-  //         setSuccess(true);
-  //         form.current.reset();
-  //       },
-  //       () => {
-  //         setError(true);
-  //       }
-  //     );
-  // };
-
+  const SendMail = api.contact.sendMail.useMutation();
   return (
     <motion.div
       className="h-full"
@@ -64,9 +43,8 @@ const ContactPage = () => {
         {/* FORM CONTAINER */}
         <form
           onSubmit={() => {
-            console.log("uruygf");
+            SendMail.mutate({ from: From, message: Message });
           }}
-          ref={form}
           className="flex h-1/2 flex-col justify-center gap-8 rounded-xl  bg-secondary p-24 text-xl lg:h-full lg:w-1/2"
         >
           <span>Dear Vishal,</span>
@@ -74,15 +52,22 @@ const ContactPage = () => {
             rows={6}
             className="resize-none border-b-2 border-b-primary bg-transparent outline-none"
             name="user_message"
+            value={Message}
+            onChange={(e) => setMessage(e.target.value)}
           />
           <span>My mail address is:</span>
           <input
             name="user_email"
             type="text"
             className="border-b-2 border-b-primary bg-transparent outline-none"
+            value={From}
+            onChange={(e) => setFrom(e.target.value)}
           />
           <span>Regards</span>
-          <button className="rounded  p-4 font-semibold  btn btn-primary hover:bg-accent">
+          <button
+            type="submit"
+            className="btn  btn-primary rounded  p-4 font-semibold hover:bg-accent"
+          >
             Send
           </button>
           {success && (
