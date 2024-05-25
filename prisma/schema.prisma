@@ -26,12 +26,13 @@ model Experience {
 }
 
 model Projects {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  order Int    @default(0)
-  title String
-  desc  String
-  img   String
-  link  String
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  order  Int    @default(0)
+  title  String
+  desc   String
+  img    String
+  link   String
+  deploy String
 }
 
 model Skills {

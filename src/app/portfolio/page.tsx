@@ -6,16 +6,7 @@ import { useRef } from "react";
 import { api } from "~/trpc/react";
 
 const PortfolioPage = () => {
-  type Project = {
-    order: number;
-    title: String;
-    desc: String;
-    img: String;
-    link: String;
-  };
-  var project: Project[] = [];
   const { data, isLoading } = api.project.getAll.useQuery();
-  project.sort((a: Project, b: Project) => b.order - a.order);
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({ target: ref });
@@ -28,7 +19,7 @@ const PortfolioPage = () => {
       </div>
     );
   } else if (data) {
-    project = data;
+    const project = data;
     return (
       <motion.div
         className="h-full"
@@ -72,6 +63,7 @@ const PortfolioPage = () => {
           <div className="sticky top-0 flex h-screen items-center gap-4 overflow-hidden">
             <motion.div style={{ x }} className="flex">
               <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
+              <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
               {project.map((item) => (
                 <div
                   className={`flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/40  to-primary/40 `}
@@ -87,17 +79,30 @@ const PortfolioPage = () => {
                     <p className="md:w96 w-80 font-bold lg:w-[500px] lg:text-lg xl:w-[600px] ">
                       {item.desc}
                     </p>
-                    <Link
-                      href={item.link.toString()}
-                      className="flex justify-end"
-                    >
-                      <button className="btn btn-secondary hover:bg-accent ">
-                        See Github & Demo
-                      </button>
-                    </Link>
+                    <div className=" flex flex-row justify-between ">
+                      <Link
+                        href={item.link.toString()}
+                        className="flex justify-end"
+                      >
+                        <button className="btn btn-secondary hover:bg-accent ">
+                          Github
+                        </button>
+                      </Link>
+                      <Link
+                        href={item.deploy.toString()}
+                        className="flex justify-end"
+                        target="_blank"
+                      >
+                        <button className="btn btn-primary hover:bg-accent ">
+                          Demo
+                        </button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}
+              <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
+              <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
               <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-r from-secondary/30 to-primary/30" />
             </motion.div>
           </div>
