@@ -83,6 +83,7 @@ const PortfolioPage = () => {
                       <Link
                         href={item.link.toString()}
                         className="flex justify-end"
+                        target="_blank"
                       >
                         <button className="btn btn-secondary hover:bg-accent ">
                           Github
