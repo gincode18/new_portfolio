@@ -191,7 +191,7 @@ export default function ThreeDCard() {
           </CardItem>
           <CardItem
             as={Link}
-            href="https://drive.google.com/file/d/108tB5p-81NnpGrNC6oCXJk6uTKdjBqaa/view?usp=sharing"
+            href="https://drive.google.com/file/d/1vR_GHztT8hA2ux3eh0EKYw1bkRu12gUe/view?usp=sharing"
             translateZ={20}
             className="rounded-xl  px-4 py-2 text-xs font-bold  bg-primary text-secondary hover:bg-accent"
           >
